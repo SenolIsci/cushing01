@@ -1,0 +1,353 @@
+,ReptNo,Model,Strategy,Diagnostic_Level,Classes,Train/Test,f1_macro Score,Accuracy,Precision_macro,Recall_macro,Balanced_Accuracy,CV fold:Best Parameters,Confusion_Matrix,F1,ACC,TPR,TNR,PPV,NPV,FPR,FNR,FDR,ROC_AUC,PRC_AUC,PRC Avg Precision,CV AUC mean,CV AUC std,Important Features,cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,best_gridCV_meanscore
+0,0,RandomForestClassifier,ALLIN,Stage 1,"(NF, SC, AD, PT)",All Train after nested CV,0.9504573170731707,0.9583333333333334,0.9562373123495052,0.9526412507559334,0.9562373123495052,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'gini', 'max_depth': 5, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[71, 2, 0, 0], [0, 38, 3, 0], [0, 1, 28, 0], [0, 0, 1, 24]]",,,,,,,,,,"(None, None, None)",,,,,"bc         0.088034
+bacth      0.323264
+1mgDSTc    0.338638
+mc         0.207669
+ufc        0.042396
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.7732304381491688
+1,0,RandomForestClassifier,ALLIN,Stage 1,"(NF, SC, AD, PT)",Final Test data after nested CV,0.8406842209024372,0.8493150684931506,0.8486696994761511,0.8398540706605222,0.8486696994761511,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'gini', 'max_depth': 5, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[28, 2, 0, 1], [3, 13, 1, 1], [0, 2, 10, 1], [0, 0, 0, 11]]",,,,,,,,,,"(None, None, None)",,,,,"bc         0.088034
+bacth      0.323264
+1mgDSTc    0.338638
+mc         0.207669
+ufc        0.042396
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.7732304381491688
+2,0,RandomForestClassifier,ALLIN,Stage 2,"(NF, SC, AD, PT)",All Train after nested CV,0.9643673780487805,0.9702380952380952,0.9775309054460407,0.9702650408368121,0.9775309054460407,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[70, 2, 1, 0], [0, 39, 2, 0], [0, 0, 29, 0], [0, 0, 0, 25]]",,,,,,,,,,"(None, None, None)",,,,,"bc         0.060747
+bacth      0.161670
+1mgDSTc    0.249524
+2mgDSTc    0.088753
+8mgDSTc    0.048179
+mc         0.139448
+ufc        0.031236
+adrMass    0.072698
+pitMass    0.147745
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8410250150324634
+3,0,RandomForestClassifier,ALLIN,Stage 2,"(NF, SC, AD, PT)",Final Test data after nested CV,0.9208333333333333,0.9178082191780822,0.9176316515026193,0.9165283352715359,0.9176316515026193,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[29, 2, 0, 0], [1, 16, 0, 1], [0, 2, 11, 0], [0, 0, 0, 11]]",,,,,,,,,,"(None, None, None)",,,,,"bc         0.060747
+bacth      0.161670
+1mgDSTc    0.249524
+2mgDSTc    0.088753
+8mgDSTc    0.048179
+mc         0.139448
+ufc        0.031236
+adrMass    0.072698
+pitMass    0.147745
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8410250150324634
+4,0,RandomForestClassifier,ONE2RESTREV,Stage 1,"(NF, (SC, AD, PT))",All Train after nested CV,0.9846938775510203,0.9821428571428571,0.9794520547945205,0.981738468785101,0.9794520547945205,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[70, 3], [0, 95]]",0.9790209790209791,0.9821428571428571,1.0,0.958904109589041,0.9693877551020408,1.0,0.0410958904109589,0.0,0.030612244897959183,0.9984138428262438,0.9988421693599676,0.9702427120432661,0.9685805422647528,0.01724310776942357,"bc         0.093423
+bacth      0.112706
+1mgDSTc    0.534089
+mc         0.206197
+ufc        0.053584
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9074831591119631
+5,0,RandomForestClassifier,ONE2RESTREV,Stage 1,"(NF, (SC, AD, PT))",Final Test data after nested CV,0.9376984126984127,0.9315068493150684,0.92357910906298,0.9288914864601597,0.92357910906298,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[27, 4], [1, 41]]",0.9205821205821205,0.9315068493150684,0.9761904761904762,0.8709677419354839,0.9111111111111111,0.9642857142857143,0.12903225806451613,0.023809523809523808,0.08888888888888889,0.9692780337941628,0.971959713435784,0.9031166195549757,0.9685805422647528,0.01724310776942357,"bc         0.093423
+bacth      0.112706
+1mgDSTc    0.534089
+mc         0.206197
+ufc        0.053584
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9074831591119631
+6,0,RandomForestClassifier,ONE2RESTREV,Stage 2,"(NF, (SC, AD, PT))",All Train after nested CV,0.9947916666666667,0.9940476190476191,0.9931506849315068,0.9939339230908106,0.9931506849315068,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[72, 1], [0, 95]]",0.993103448275862,0.9940476190476191,1.0,0.9863013698630136,0.9895833333333334,1.0,0.0136986301369863,0.0,0.010416666666666666,0.9997116077865897,0.9997783810730634,0.9850105526975332,0.9804891015417332,0.020831274513379426,"bc         0.063646
+bacth      0.070431
+1mgDSTc    0.440922
+2mgDSTc    0.195392
+8mgDSTc    0.040108
+mc         0.105684
+ufc        0.051862
+adrMass    0.002366
+pitMass    0.029589
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9330157593987245
+7,0,RandomForestClassifier,ONE2RESTREV,Stage 2,"(NF, (SC, AD, PT))",Final Test data after nested CV,0.9666666666666667,0.958904109589041,0.9516129032258065,0.9573348918760958,0.9516129032258065,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[28, 3], [0, 42]]",0.9491525423728813,0.958904109589041,1.0,0.9032258064516129,0.9333333333333333,1.0,0.0967741935483871,0.0,0.06666666666666667,0.9946236559139785,0.9960832091676433,0.9333333333333333,0.9804891015417332,0.020831274513379426,"bc         0.063646
+bacth      0.070431
+1mgDSTc    0.440922
+2mgDSTc    0.195392
+8mgDSTc    0.040108
+mc         0.105684
+ufc        0.051862
+adrMass    0.002366
+pitMass    0.029589
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9330157593987245
+8,0,RandomForestClassifier,ONE2REST,Stage 1,"((NF, AD, PT), SC)",All Train after nested CV,0.9659090909090908,0.9821428571428571,0.9881889763779528,0.9763768455589408,0.9881889763779528,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'entropy', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[124, 3], [0, 41]]",0.9880478087649402,0.9821428571428571,1.0,0.9763779527559056,0.9318181818181818,1.0,0.023622047244094488,0.0,0.06818181818181818,0.9928941809103131,0.9818296055998693,0.8550311477140744,0.9336980920314254,0.05256016245395425,"bc         0.113295
+bacth      0.286307
+1mgDSTc    0.351973
+mc         0.187558
+ufc        0.060867
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.852104949963402
+9,0,RandomForestClassifier,ONE2REST,Stage 1,"((NF, AD, PT), SC)",Final Test data after nested CV,0.8377100840336134,0.8767123287671232,0.8247474747474748,0.8308880308880309,0.8247474747474748,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'entropy', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[51, 4], [5, 13]]",0.8120024494794855,0.8767123287671232,0.7222222222222222,0.9272727272727272,0.7647058823529411,0.9107142857142857,0.07272727272727272,0.2777777777777778,0.23529411764705882,0.9075757575757576,0.735769264725558,0.6207807323842778,0.9336980920314254,0.05256016245395425,"bc         0.113295
+bacth      0.286307
+1mgDSTc    0.351973
+mc         0.187558
+ufc        0.060867
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.852104949963402
+10,0,RandomForestClassifier,ONE2REST,Stage 1,"((NF, SC, PT), AD)",All Train after nested CV,0.9264705882352942,0.9702380952380952,0.9820143884892086,0.9511599511599511,0.9820143884892086,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[134, 5], [0, 29]]",0.9816849816849816,0.9702380952380952,1.0,0.9640287769784173,0.8529411764705882,1.0,0.03597122302158273,0.0,0.14705882352941177,0.9908211361944926,0.9649778011394748,0.822805763017109,0.9391296206269468,0.05245287937514682,"bc         0.146311
+bacth      0.304781
+1mgDSTc    0.273717
+mc         0.238467
+ufc        0.036725
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8491582900670128
+11,0,RandomForestClassifier,ONE2REST,Stage 1,"((NF, SC, PT), AD)",Final Test data after nested CV,0.96875,0.9452054794520548,0.8461538461538461,0.8929618768328446,0.8461538461538461,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 6, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[60, 0], [4, 9]]",0.8181818181818181,0.9452054794520548,0.6923076923076923,1.0,1.0,0.9375,0.0,0.3076923076923077,0.0,0.9467948717948718,0.8738354594123823,0.7471022128556375,0.9391296206269468,0.05245287937514682,"bc         0.146311
+bacth      0.304781
+1mgDSTc    0.273717
+mc         0.238467
+ufc        0.036725
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8491582900670128
+12,0,RandomForestClassifier,ONE2REST,Stage 1,"((NF, SC, AD), PT)",All Train after nested CV,0.9807692307692308,0.9940476190476191,0.9965034965034965,0.9884416924664603,0.9965034965034965,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[142, 1], [0, 25]]",0.9964912280701755,0.9940476190476191,1.0,0.993006993006993,0.9615384615384616,1.0,0.006993006993006993,0.0,0.038461538461538464,0.9938461538461538,0.9756248966087678,0.8978571428571429,0.9585858585858585,0.03737095294414507,"bc         0.080757
+bacth      0.411353
+1mgDSTc    0.277901
+mc         0.210984
+ufc        0.019006
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8913454270597128
+13,0,RandomForestClassifier,ONE2REST,Stage 1,"((NF, SC, AD), PT)",Final Test data after nested CV,0.8761904761904762,0.9315068493150684,0.8475073313782991,0.8609523809523809,0.8475073313782991,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[60, 2], [3, 8]]",0.8304498269896194,0.9315068493150684,0.7272727272727273,0.967741935483871,0.8,0.9523809523809523,0.03225806451612903,0.2727272727272727,0.2,0.9780058651026392,0.8818043068043069,0.6229140722291409,0.9585858585858585,0.03737095294414507,"bc         0.080757
+bacth      0.411353
+1mgDSTc    0.277901
+mc         0.210984
+ufc        0.019006
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8913454270597128
+14,0,RandomForestClassifier,ONE2REST,Stage 2,"((NF, AD, PT), SC)",All Train after nested CV,0.9125000000000001,0.9464285714285714,0.9563088150566545,0.9312195787654096,0.9563088150566545,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[119, 8], [1, 40]]",0.9559192690029119,0.9464285714285714,0.975609756097561,0.937007874015748,0.8333333333333334,0.9916666666666667,0.06299212598425197,0.024390243902439025,0.16666666666666666,0.9834837718455924,0.9593662964028767,0.8369155659995138,0.926290684624018,0.021650411137726904,"bc         0.077151
+bacth      0.214971
+1mgDSTc    0.243643
+2mgDSTc    0.235792
+8mgDSTc    0.015353
+mc         0.144956
+ufc        0.048821
+adrMass    0.009524
+pitMass    0.009791
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8477708240253042
+15,0,RandomForestClassifier,ONE2REST,Stage 2,"((NF, AD, PT), SC)",Final Test data after nested CV,0.8156565656565656,0.863013698630137,0.8156565656565656,0.8156565656565656,0.8156565656565656,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[50, 5], [5, 13]]",0.8049535603715171,0.863013698630137,0.7222222222222222,0.9090909090909091,0.7222222222222222,0.9090909090909091,0.09090909090909091,0.2777777777777778,0.2777777777777778,0.9383838383838384,0.7163224418778384,0.5900980889565364,0.926290684624018,0.021650411137726904,"bc         0.077151
+bacth      0.214971
+1mgDSTc    0.243643
+2mgDSTc    0.235792
+8mgDSTc    0.015353
+mc         0.144956
+ufc        0.048821
+adrMass    0.009524
+pitMass    0.009791
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8477708240253042
+16,0,RandomForestClassifier,ONE2REST,Stage 2,"((NF, SC, PT), AD)",All Train after nested CV,0.9027777777777778,0.9583333333333334,0.974820143884892,0.9332387170025547,0.974820143884892,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[132, 7], [0, 29]]",0.974169741697417,0.9583333333333334,1.0,0.9496402877697842,0.8055555555555556,1.0,0.050359712230215826,0.0,0.19444444444444445,0.9952865293971719,0.9816791750161671,0.825179131213614,0.946868686868687,0.07448531911860437,"bc         0.122444
+bacth      0.205564
+1mgDSTc    0.209371
+2mgDSTc    0.068129
+8mgDSTc    0.051117
+mc         0.251676
+ufc        0.022362
+adrMass    0.029615
+pitMass    0.039723
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8812098492249459
+17,0,RandomForestClassifier,ONE2REST,Stage 2,"((NF, SC, PT), AD)",Final Test data after nested CV,0.9761904761904762,0.958904109589041,0.8846153846153846,0.9225874867444327,0.8846153846153846,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[60, 0], [3, 10]]",0.8695652173913044,0.958904109589041,0.7692307692307693,1.0,1.0,0.9523809523809523,0.0,0.23076923076923078,0.0,0.9487179487179488,0.9059549550499777,0.8103266596417281,0.946868686868687,0.07448531911860437,"bc         0.122444
+bacth      0.205564
+1mgDSTc    0.209371
+2mgDSTc    0.068129
+8mgDSTc    0.051117
+mc         0.251676
+ufc        0.022362
+adrMass    0.029615
+pitMass    0.039723
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8812098492249459
+18,0,RandomForestClassifier,ONE2REST,Stage 2,"((NF, SC, AD), PT)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[143, 0], [0, 25]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,0.994949494949495,0.0,"bc         0.027768
+bacth      0.185927
+1mgDSTc    0.100013
+2mgDSTc    0.016633
+8mgDSTc    0.119732
+mc         0.051855
+ufc        0.003660
+adrMass    0.097914
+pitMass    0.396499
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9884778653729533
+19,0,RandomForestClassifier,ONE2REST,Stage 2,"((NF, SC, AD), PT)",Final Test data after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[62, 0], [0, 11]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.9999999999999999,1.0,1.0,0.994949494949495,0.0,"bc         0.027768
+bacth      0.185927
+1mgDSTc    0.100013
+2mgDSTc    0.016633
+8mgDSTc    0.119732
+mc         0.051855
+ufc        0.003660
+adrMass    0.097914
+pitMass    0.396499
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9884778653729533
+20,0,RandomForestClassifier,ONE2ONE,Stage 1,"(NF, SC)",All Train after nested CV,0.9555555555555555,0.9649122807017544,0.9726027397260274,0.9626596790042581,0.9726027397260274,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[69, 4], [0, 41]]",0.971830985915493,0.9649122807017544,1.0,0.9452054794520548,0.9111111111111111,1.0,0.0547945205479452,0.0,0.08888888888888889,0.9886401603742064,0.9754529925359152,0.8956898899132532,0.948989898989899,0.06348710298082563,"bc         0.042449
+bacth      0.268872
+1mgDSTc    0.494231
+mc         0.154894
+ufc        0.039554
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9332299421009097
+21,0,RandomForestClassifier,ONE2ONE,Stage 1,"(NF, SC)",Final Test data after nested CV,0.8768939393939394,0.8775510204081632,0.8566308243727598,0.864889705882353,0.8566308243727598,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[29, 2], [4, 14]]",0.8493723849372385,0.8775510204081632,0.7777777777777778,0.9354838709677419,0.875,0.8787878787878788,0.06451612903225806,0.2222222222222222,0.125,0.9623655913978495,0.9136585994558132,0.76218820861678,0.948989898989899,0.06348710298082563,"bc         0.042449
+bacth      0.268872
+1mgDSTc    0.494231
+mc         0.154894
+ufc        0.039554
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9332299421009097
+22,0,RandomForestClassifier,ONE2ONE,Stage 1,"(NF, AD)",All Train after nested CV,0.9932432432432432,0.9901960784313726,0.9827586206896552,0.987826709631221,0.9827586206896552,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[73, 0], [1, 28]]",0.9824561403508771,0.9901960784313726,0.9655172413793104,1.0,1.0,0.9864864864864865,0.0,0.034482758620689655,0.0,0.9995276334435522,0.9988307570352754,0.9506423258958756,0.9810121416182022,0.028888888888888877,"bc         0.039893
+bacth      0.173728
+1mgDSTc    0.482047
+mc         0.268996
+ufc        0.035336
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9393889694735678
+23,0,RandomForestClassifier,ONE2ONE,Stage 1,"(NF, AD)",Final Test data after nested CV,0.9696969696969697,0.9545454545454546,0.9230769230769231,0.9427083333333333,0.9230769230769231,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[31, 0], [2, 11]]",0.9166666666666666,0.9545454545454546,0.8461538461538461,1.0,1.0,0.9393939393939394,0.0,0.15384615384615385,0.0,0.9801488833746899,0.9699633699633698,0.8916083916083916,0.9810121416182022,0.028888888888888877,"bc         0.039893
+bacth      0.173728
+1mgDSTc    0.482047
+mc         0.268996
+ufc        0.035336
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9393889694735678
+24,0,RandomForestClassifier,ONE2ONE,Stage 1,"(NF, PT)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[73, 0], [0, 25]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,0.9887297214569941,0.013333333333333286,"bc         0.057917
+bacth      0.187210
+1mgDSTc    0.520168
+mc         0.226387
+ufc        0.008318
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9695238095238095
+25,0,RandomForestClassifier,ONE2ONE,Stage 1,"(NF, PT)",Final Test data after nested CV,0.9583333333333333,0.9761904761904762,0.9838709677419355,0.970064148253742,0.9838709677419355,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[30, 1], [0, 11]]",0.9836065573770492,0.9761904761904762,1.0,0.967741935483871,0.9166666666666666,1.0,0.03225806451612903,0.0,0.08333333333333333,0.9912023460410556,0.9738062442607898,0.9166666666666666,0.9887297214569941,0.013333333333333286,"bc         0.057917
+bacth      0.187210
+1mgDSTc    0.520168
+mc         0.226387
+ufc        0.008318
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9695238095238095
+26,0,RandomForestClassifier,ONE2ONE,Stage 1,"(SC, AD)",All Train after nested CV,0.9833333333333334,0.9857142857142858,0.9878048780487805,0.9853525842226407,0.9878048780487805,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[40, 1], [0, 29]]",0.9876543209876543,0.9857142857142858,1.0,0.975609756097561,0.9666666666666667,1.0,0.024390243902439025,0.0,0.03333333333333333,0.9966358284272497,0.9950644304389843,0.9666666666666667,0.8697969594939292,0.14323400711985412,"bc         0.174661
+bacth      0.136146
+1mgDSTc    0.202948
+mc         0.395934
+ufc        0.090310
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.7910413908433873
+27,0,RandomForestClassifier,ONE2ONE,Stage 1,"(SC, AD)",Final Test data after nested CV,0.8675213675213675,0.8709677419354839,0.8675213675213675,0.8675213675213675,0.8675213675213675,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[16, 2], [2, 11]]",0.8669950738916256,0.8709677419354839,0.8461538461538461,0.8888888888888888,0.8461538461538461,0.8888888888888888,0.1111111111111111,0.15384615384615385,0.15384615384615385,0.923076923076923,0.9374377828054299,0.7804924603932049,0.8697969594939292,0.14323400711985412,"bc         0.174661
+bacth      0.136146
+1mgDSTc    0.202948
+mc         0.395934
+ufc        0.090310
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.7910413908433873
+28,0,RandomForestClassifier,ONE2ONE,Stage 1,"(SC, PT)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 5, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[41, 0], [0, 25]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,0.9990243902439024,0.9984307692307691,0.9751515151515151,0.9816161616161616,0.01808757844011077,"bc         0.071167
+bacth      0.568660
+1mgDSTc    0.126522
+mc         0.202377
+ufc        0.031274
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8862935389304557
+29,0,RandomForestClassifier,ONE2ONE,Stage 1,"(SC, PT)",Final Test data after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 5, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[18, 0], [0, 11]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,0.9816161616161616,0.01808757844011077,"bc         0.071167
+bacth      0.568660
+1mgDSTc    0.126522
+mc         0.202377
+ufc        0.031274
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.8862935389304557
+30,0,RandomForestClassifier,ONE2ONE,Stage 1,"(AD, PT)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[29, 0], [0, 25]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,0.9755555555555555,0.02666666666666666,"bc         0.065313
+bacth      0.681404
+1mgDSTc    0.127252
+mc         0.081034
+ufc        0.044997
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9414311179017062
+31,0,RandomForestClassifier,ONE2ONE,Stage 1,"(AD, PT)",Final Test data after nested CV,0.9230769230769231,0.9166666666666666,0.9230769230769231,0.9166666666666666,0.9230769230769231,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[11, 2], [0, 11]]",0.9166666666666666,0.9166666666666666,1.0,0.8461538461538461,0.8461538461538461,1.0,0.15384615384615385,0.0,0.15384615384615385,0.9720279720279721,0.9630739210284665,0.8461538461538461,0.9755555555555555,0.02666666666666666,"bc         0.065313
+bacth      0.681404
+1mgDSTc    0.127252
+mc         0.081034
+ufc        0.044997
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9414311179017062
+32,0,RandomForestClassifier,ONE2ONE,Stage 2,"(NF, SC)",All Train after nested CV,0.9659090909090908,0.9736842105263158,0.9794520547945205,0.9718634306869601,0.9794520547945205,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[70, 3], [0, 41]]",0.9790209790209791,0.9736842105263158,1.0,0.958904109589041,0.9318181818181818,1.0,0.0410958904109589,0.0,0.06818181818181818,0.9936518543267624,0.9875494769922744,0.9163158889850832,0.9602132435465769,0.04681430532554743,"bc         0.032004
+bacth      0.194068
+1mgDSTc    0.440883
+2mgDSTc    0.185592
+8mgDSTc    0.008571
+mc         0.076594
+ufc        0.055086
+adrMass    0.000000
+pitMass    0.007202
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9051836810532462
+33,0,RandomForestClassifier,ONE2ONE,Stage 2,"(NF, SC)",Final Test data after nested CV,0.8768939393939394,0.8775510204081632,0.8566308243727598,0.864889705882353,0.8566308243727598,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[29, 2], [4, 14]]",0.8493723849372385,0.8775510204081632,0.7777777777777778,0.9354838709677419,0.875,0.8787878787878788,0.06451612903225806,0.2222222222222222,0.125,0.978494623655914,0.9637206783298116,0.76218820861678,0.9602132435465769,0.04681430532554743,"bc         0.032004
+bacth      0.194068
+1mgDSTc    0.440883
+2mgDSTc    0.185592
+8mgDSTc    0.008571
+mc         0.076594
+ufc        0.055086
+adrMass    0.000000
+pitMass    0.007202
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9051836810532462
+34,0,RandomForestClassifier,ONE2ONE,Stage 2,"(NF, AD)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[73, 0], [0, 29]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,0.9999999999999998,1.0,0.9774410774410774,0.035555555555555556,"bc         0.077120
+bacth      0.142248
+1mgDSTc    0.365680
+2mgDSTc    0.089009
+8mgDSTc    0.058733
+mc         0.219785
+ufc        0.047425
+adrMass    0.000000
+pitMass    0.000000
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9515622598423468
+35,0,RandomForestClassifier,ONE2ONE,Stage 2,"(NF, AD)",Final Test data after nested CV,0.984375,0.9772727272727273,0.9615384615384616,0.9720634920634921,0.9615384615384616,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[31, 0], [1, 12]]",0.9600000000000001,0.9772727272727273,0.9230769230769231,1.0,1.0,0.96875,0.0,0.07692307692307693,0.0,0.9975186104218363,0.9942941673710901,0.9458041958041958,0.9774410774410774,0.035555555555555556,"bc         0.077120
+bacth      0.142248
+1mgDSTc    0.365680
+2mgDSTc    0.089009
+8mgDSTc    0.058733
+mc         0.219785
+ufc        0.047425
+adrMass    0.000000
+pitMass    0.000000
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9515622598423468
+36,0,RandomForestClassifier,ONE2ONE,Stage 2,"(NF, PT)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[73, 0], [0, 25]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,0.994949494949495,0.0,"bc         0.016828
+bacth      0.066515
+1mgDSTc    0.254892
+2mgDSTc    0.006539
+8mgDSTc    0.112189
+mc         0.037864
+ufc        0.000000
+adrMass    0.174666
+pitMass    0.330507
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,1.0
+37,0,RandomForestClassifier,ONE2ONE,Stage 2,"(NF, PT)",Final Test data after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[31, 0], [0, 11]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,0.994949494949495,0.0,"bc         0.016828
+bacth      0.066515
+1mgDSTc    0.254892
+2mgDSTc    0.006539
+8mgDSTc    0.112189
+mc         0.037864
+ufc        0.000000
+adrMass    0.174666
+pitMass    0.330507
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,1.0
+38,0,RandomForestClassifier,ONE2ONE,Stage 2,"(SC, AD)",All Train after nested CV,0.967741935483871,0.9714285714285714,0.975609756097561,0.9708333333333332,0.975609756097561,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[39, 2], [0, 29]]",0.975,0.9714285714285714,1.0,0.9512195121951219,0.9354838709677419,1.0,0.04878048780487805,0.0,0.06451612903225806,0.9873843566021867,0.982521171897551,0.9062032475825579,0.8888888888888888,0.11133657679906156,"bc         0.176963
+bacth      0.073283
+1mgDSTc    0.209987
+2mgDSTc    0.164315
+8mgDSTc    0.043189
+mc         0.222567
+ufc        0.105348
+adrMass    0.000000
+pitMass    0.004349
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.7947646895015316
+39,0,RandomForestClassifier,ONE2ONE,Stage 2,"(SC, AD)",Final Test data after nested CV,0.95,0.9354838709677419,0.9230769230769231,0.9320175438596492,0.9230769230769231,"{'bootstrap': True, 'class_weight': 'balanced_subsample', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[18, 0], [2, 11]]",0.9166666666666666,0.9354838709677419,0.8461538461538461,1.0,1.0,0.9,0.0,0.15384615384615385,0.0,0.9273504273504274,0.9362032704137966,0.9106699751861043,0.8888888888888888,0.11133657679906156,"bc         0.176963
+bacth      0.073283
+1mgDSTc    0.209987
+2mgDSTc    0.164315
+8mgDSTc    0.043189
+mc         0.222567
+ufc        0.105348
+adrMass    0.000000
+pitMass    0.004349
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.7947646895015316
+40,0,RandomForestClassifier,ONE2ONE,Stage 2,"(SC, PT)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[41, 0], [0, 25]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,0.9751515151515151,0.994949494949495,0.0,"bc         0.045857
+bacth      0.479139
+1mgDSTc    0.053643
+2mgDSTc    0.025555
+8mgDSTc    0.032930
+mc         0.079291
+ufc        0.000271
+adrMass    0.132971
+pitMass    0.150343
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9642857142857143
+41,0,RandomForestClassifier,ONE2ONE,Stage 2,"(SC, PT)",Final Test data after nested CV,0.9583333333333333,0.9655172413793104,0.9722222222222222,0.9639751552795031,0.9722222222222222,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 50, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[17, 1], [0, 11]]",0.9714285714285714,0.9655172413793104,1.0,0.9444444444444444,0.9166666666666666,1.0,0.05555555555555555,0.0,0.08333333333333333,1.0,1.0,0.9166666666666666,0.994949494949495,0.0,"bc         0.045857
+bacth      0.479139
+1mgDSTc    0.053643
+2mgDSTc    0.025555
+8mgDSTc    0.032930
+mc         0.079291
+ufc        0.000271
+adrMass    0.132971
+pitMass    0.150343
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,0.9642857142857143
+42,0,RandomForestClassifier,ONE2ONE,Stage 2,"(AD, PT)",All Train after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[29, 0], [0, 25]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0000000000000002,1.0,0.994949494949495,0.0,"bc         0.017897
+bacth      0.327568
+1mgDSTc    0.041268
+2mgDSTc    0.021818
+8mgDSTc    0.065907
+mc         0.013426
+ufc        0.011668
+adrMass    0.131011
+pitMass    0.369437
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,1.0
+43,0,RandomForestClassifier,ONE2ONE,Stage 2,"(AD, PT)",Final Test data after nested CV,1.0,1.0,1.0,1.0,1.0,"{'bootstrap': True, 'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 4, 'max_features': 'auto', 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_impurity_split': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 88489545, 'verbose': 0, 'warm_start': False}","[[13, 0], [0, 11]]",1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0,1.0,1.0,0.994949494949495,0.0,"bc         0.017897
+bacth      0.327568
+1mgDSTc    0.041268
+2mgDSTc    0.021818
+8mgDSTc    0.065907
+mc         0.013426
+ufc        0.011668
+adrMass    0.131011
+pitMass    0.369437
+dtype: float64",cv_test_mean_f1,cv_test_std95_f1,cv_test_mean_accuracy,cv_test_std95_accuracy,1.0
