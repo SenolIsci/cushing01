@@ -28,20 +28,33 @@ from sklearn.model_selection import learning_curve
 from sklearn.utils import shuffle
 from sklearn.pipeline import Pipeline
 import warnings
+import pickle
 
 # In[]
 warnings.filterwarnings("ignore")
-randstateseed=88489545
+randstateseed=45639820
+randstateseed=76840034
+randstateseed=34048502
+randstateseed=27487045
+randstateseed=77478393
+randstateseed=11838145
+randstateseed=83097023
+randstateseed=11838145
+randstateseed=40930938
+randstateseed=83197023
+randstateseed=88489545 # used
+
+
 #datset file
 datafilename='CSdata.tab'
 #Step for comparison of algorithms
-STEP1_flag=True
+STEP1_flag=False
 #Step for training and tes using best algorithm
 STEP2_flag=True
-#Features for Stage1 and Stage 2
+#Features for Stage1 and Stage2
 Level_1_medical_test=["bc","bacth","1mgDSTc","mc","ufc","types"]
 Level_2_medical_test=["bc","bacth","1mgDSTc","2mgDSTc","8mgDSTc","mc","ufc","adrMass","pitMass","types"]
-Diagnostic_Level_dict={"Stage 1":Level_1_medical_test,"Stage 2":Level_2_medical_test}
+Diagnostic_Level_dict={"Stage1":Level_1_medical_test,"Stage2":Level_2_medical_test}
 ufc_normal_upper=  403 #this is the user set value for this feature
 cv_train_size=0.7 # ratio of train split in crossalidation
 cv_test_size=0.3 #ratio of test  split in crossalidation
@@ -65,24 +78,16 @@ binary_classification_metrics_flag=True
 
 # In[]
 
-def impute_withmedian_log_transform(X_train,X_test_final,ufc_normal_upper=  ufc_normal_upper):
-    #TRAIN DATA PREPROCESSING
-    col_medians=X_train.median()
+def impute_withmedian_log_transform(X_data,ufc_normal_upper=  ufc_normal_upper):
+    # DATA IMPUTATION AND TRANSFORM 
+    col_medians=X_data.median()
     for id in col_medians.index.values:
-        X_train.fillna(value=col_medians[id],axis=0,inplace=True)     
-    if 'ufc' in X_train.index.values:
-        X_train['ufc']=X_train['ufc']/ufc_normal_upper                
+        X_data.fillna(value=col_medians[id],axis=0,inplace=True)     
+    # if 'ufc' in X_data.index.values:
+    #     X_data['ufc']=X_data['ufc']/ufc_normal_upper                
     #take log
-    X_train=X_train.apply(np.log10,axis=0) 
-    #TEST DATA PREPROCESSING       
-    col_medians=X_test_final.median()  
-    for id in col_medians.index.values:
-        X_test_final.fillna(value=col_medians[id],axis=0,inplace=True) 
-    if 'ufc' in X_test_final.index.values:
-        X_test_final['ufc']=X_test_final['ufc']/ufc_normal_upper         
-    #take log
-    X_test_final=X_test_final.apply(np.log10,axis=0)   
-    return X_train,X_test_final       
+    X_data=X_data.apply(np.log10,axis=0) 
+    return X_data,col_medians     
     # In[]
 def load_data(datafile,delim='\t'):
     dfo=pd.read_csv(datafile,delimiter=delim) #load tab seperated data   
@@ -98,7 +103,7 @@ def load_data(datafile,delim='\t'):
     return (df,nof_class,nameof_class,feat_labels)  
 
     # In[]
-def split_and_preprocess_data(df,train_size=0.8,test_size_final=0.2,imputation='impute_withmedian_log_transform',ufc_normal_upper=  ufc_normal_upper, first_shuffle=True,sampling_randomseed=randstateseed):      
+def split_data(df,train_size=0.8,test_size_final=0.2, first_shuffle=True,sampling_randomseed=randstateseed):      
     #GENERATE STRATIFIED TRAIN AND FINAL TEST SAMPLES  
     if first_shuffle:
         #shuffle data rows 
@@ -110,6 +115,10 @@ def split_and_preprocess_data(df,train_size=0.8,test_size_final=0.2,imputation='
     #stratified train test split
     X_train, X_test_final, y_train, y_test_final = train_test_split(X, y,train_size=train_size,test_size=test_size_final,
                                                         random_state=randstateseed,shuffle=True, stratify=y)
+    return X_train, X_test_final, y_train, y_test_final
+    
+  # In[]
+def preprocess_data(X_train, X_test_final, y_train, y_test_final,imputation='impute_withmedian_log_transform',ufc_normal_upper=  ufc_normal_upper):      
     #Two-Sample Kolmogorov-Smirnov Test
     #Compute the Kolmogorov-Smirnov statistic on 2 samples.
     #This is a two-sided test for the null hypothesis that 2 independent samples are drawn from the same continuous distribution.
@@ -119,7 +128,8 @@ def split_and_preprocess_data(df,train_size=0.8,test_size_final=0.2,imputation='
     #Measure Skwness of the Data
     sk_before=MeasureSkewness(X_train)   
     if imputation=='impute_withmedian_log_transform':
-        X_train,X_test_final=impute_withmedian_log_transform(X_train,X_test_final,ufc_normal_upper=  ufc_normal_upper) 
+        X_train,X_train_medians=impute_withmedian_log_transform(X_train,ufc_normal_upper=  ufc_normal_upper) 
+        X_test_final,X_test_final_medians=impute_withmedian_log_transform(X_test_final,ufc_normal_upper=  ufc_normal_upper) 
     #Measure Skwness of the Data after preprocessing
     sk_after=MeasureSkewness(X_train) 
     print("Skewness of Train Data:\nFeatures: {}\nBefore preprocessing:\n{}\nAfter preprocessing: \n{}".format(X_train.columns.values,sk_before,sk_after))    
@@ -127,6 +137,7 @@ def split_and_preprocess_data(df,train_size=0.8,test_size_final=0.2,imputation='
     dfs_test_final=pd.concat([X_test_final,y_test_final],axis=1)
     
     return (X_train,y_train,X_test_final,y_test_final,dfs_train,dfs_test_final)
+
 # In[]
 def gen_feature_importances(classifier,key,model_title,X,y_test_final, y_pred_final,feature_index,show_figures=True):    
     #MDI. Mean Decrease in ımpurty    
@@ -204,7 +215,7 @@ def gen_confusion_matrix(classifier, key,y_true, y_pred, model_title=None,
         #fig.text(0.01, 0.98, figannotation, weight="bold", fontsize="16",horizontalalignment='left', verticalalignment='center')
         plt.tight_layout()
         plt.show()
-       # plt.savefig(figtitle,dpi=1000)
+        plt.savefig(figtitle,dpi=1000)
         #plt.close()
     return cm
 
@@ -658,8 +669,8 @@ class_target_short_codes={
 def cushing_analysis(datafile,dataset_strategy,Level_x_medical_test,n_repeats, outer_cv_k_fold_count,inner_cv_k_fold_count,randstateseed=randstateseed):
     """
         #choose medical diagnostic level
-        Level_x_medical_test="Stage 1"
-        Level_x_medical_test="Stage 2"
+        Level_x_medical_test="Stage1"
+        Level_x_medical_test="Stage2"
         #choose dataset strategy
         dataset_strategy='ALLIN'
         dataset_strategy='ONE2REST'
@@ -688,7 +699,9 @@ def cushing_analysis(datafile,dataset_strategy,Level_x_medical_test,n_repeats, o
     #check if dataset class info is consistent with the parameters
     if sorted(subtypes)!=sorted(cnames):
         raise Exception('dataset class info is not consistent with the parameters')
-    X_train,y_train,X_test_final,y_test_final,dfs_train,dfs_test_final= split_and_preprocess_data(dfo,train_size=train_size,test_size_final=test_size_final,imputation='impute_withmedian_log_transform',ufc_normal_upper=  ufc_normal_upper, first_shuffle=True,sampling_randomseed=randstateseed)
+    X_train,y_train,X_test_final,y_test_final= split_data(dfo.copy(),train_size=train_size,test_size_final=test_size_final, first_shuffle=True,sampling_randomseed=randstateseed)
+    X_train,y_train,X_test_final,y_test_final,dfs_train,dfs_test_final=preprocess_data(X_train,y_train,X_test_final,y_test_final,imputation='impute_withmedian_log_transform',ufc_normal_upper=  ufc_normal_upper)
+    dataset_dict=create_datasubsets(X_train,y_train,X_test_final,y_test_final,classes)   
     dataset_dict=create_datasubsets(X_train,y_train,X_test_final,y_test_final,classes)   
     models=[] 
     for key in  dataset_dict[dataset_strategy][0].keys(): 
@@ -852,7 +865,7 @@ def cushing_analysis(datafile,dataset_strategy,Level_x_medical_test,n_repeats, o
                         table_entry[11]=gscv.best_estimator_.get_params()                  
                         df_res = df_res.append(pd.Series(table_entry, index=df_res.columns ), ignore_index=True)   
             if STEP2_flag==True: 
-    #            for algo_title, gs_est in gridcvs.items():
+    #           for algo_title, gs_est in gridcvs.items():
                 for gs_est in [gridcvs[RF_clf5_title]]: ##select Random forest
                     algo_title=RF_clf5_title
                     print("\n************TRAINING DATA RESULTS*****************")                                   
@@ -960,8 +973,10 @@ def cushing_analysis(datafile,dataset_strategy,Level_x_medical_test,n_repeats, o
                     print('Total data class counts in test data')
                     print(df_test['types'].value_counts().values)
                     print('data size:',df_test.index.size)
-                    print('Features list',df_test.columns.values)                    
+                    print('Features list',df_test.columns.values)       
+ 
                     y_pred=best_est.predict(X_test_final)
+                    
                     y_pred_final=y_pred
                     acc_score = accuracy_score(y_test_final,y_pred)
                     f1score,precision,recall,support=precision_recall_fscore_support(y_test_final,y_pred,average='macro')
@@ -1015,15 +1030,30 @@ def cushing_analysis(datafile,dataset_strategy,Level_x_medical_test,n_repeats, o
                     else:
                         print (best_df_res.iloc[:,13:24].round(3).tail(1))                        
                     print('\n************FINAL MODEL***************')
+                    
                     ##All data 
                     X=pd.concat((X_train,X_test_final), axis=0)
                     y=pd.concat((y_train,y_test_final),axis=0)
+                    
+
+                    _,feat_imputation_values=impute_withmedian_log_transform(dfo.drop(columns=dfo.columns.values[-1]),ufc_normal_upper=  ufc_normal_upper) 
                     print("Best Parameters on all data")
                     print(algo_title+":" )
                     gs_est.fit(X=X, y=y)                    
                     final_model=gs_est.best_estimator_
-                    final_model=best_est.get_params()
+                    final_model_params=best_est.get_params()
                     final_model_score=gs_est.best_score_
+                    
+                    #save the model to a file
+                    modelsave=final_model
+                    filename_model = "Final_CSprediction_model"+"_"+dataset_strategy+"_"+Level_x_medical_test+".pkl"
+                    pickle.dump(modelsave, open(filename_model, 'wb'))
+                    filename_imputa = "Final_CSprediction_model_imputation_params"+"_"+dataset_strategy+"_"+Level_x_medical_test+".pkl"
+                    pickle.dump(feat_imputation_values,open(filename_imputa, 'wb'))
+                    
+                    
+                    #model_loaded = pickle.load(open(filename_model,'rb'))
+                    #print(model.predict(X_test_final))
                
 ########## WRITE TO FILE ###############3
     file_title="cushing NESTED CV results"+"_"+dataset_strategy+"_"+Level_x_medical_test+"_rep"+str(n_repeats)+"nestedCV_"+str(outer_cv_k_fold_count)+"x"+str(inner_cv_k_fold_count)+"_s"+str(randstateseed)+".csv"        
@@ -1048,30 +1078,32 @@ number_of_cv_repeat=1
 outer_cv_k_fold_count=5
 inner_cv_k_fold_count=3
 sampleseed=randstateseed    
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ALLIN","Stage 1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
-df_list.append(df)
-best_df_list.append(best_df)    
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ALLIN","Stage 2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
-df_list.append(df)
-best_df_list.append(best_df)
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2RESTREV","Stage 1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+
+
+df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2RESTREV","Stage1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
 df_list.append(df)
 best_df_list.append(best_df)
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2RESTREV","Stage 2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ALLIN","Stage2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
 df_list.append(df)
 best_df_list.append(best_df)
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2REST","Stage 1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
-df_list.append(df)
-best_df_list.append(best_df)
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2REST","Stage 2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
-df_list.append(df)
-best_df_list.append(best_df)
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2ONE","Stage 1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
-df_list.append(df)
-best_df_list.append(best_df)
-df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2ONE","Stage 2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
-df_list.append(df)
-best_df_list.append(best_df)
+# df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ALLIN","Stage1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+# df_list.append(df)
+# best_df_list.append(best_df)   
+# df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2REST","Stage1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+# df_list.append(df)
+# best_df_list.append(best_df)
+# df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2RESTREV","Stage2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+# df_list.append(df)
+# best_df_list.append(best_df)
+# df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2REST","Stage2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+# df_list.append(df)
+# best_df_list.append(best_df)
+# df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2ONE","Stage1",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+# df_list.append(df)
+# best_df_list.append(best_df)
+# df,best_df,dfs_train,dfs_test_final=cushing_analysis(datafilename,"ONE2ONE","Stage2",n_repeats=number_of_cv_repeat,outer_cv_k_fold_count=outer_cv_k_fold_count,inner_cv_k_fold_count=inner_cv_k_fold_count,randstateseed=sampleseed)
+# df_list.append(df)
+# best_df_list.append(best_df)
 df_result_table = pd.concat(df_list, ignore_index=True, sort=False)
 df_result_table_BATCH=pd.concat([df_result_table_BATCH,df_result_table], ignore_index=True, sort=False)            
 file_title="BATCH ALL cushing CV analysis results"+".csv" 
